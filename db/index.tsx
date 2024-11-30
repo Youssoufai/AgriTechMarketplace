@@ -4,7 +4,7 @@ let client: MongoClient | null = null;
 
 try {
     if (!process.env.MONGODB_URI) {
-        throw new Error("MongoDB URI is required")
+        throw new Error("MongoDB URI is required!!")
     }
     client = new MongoClient(process.env.MONGODB_URI);
     client.connect();
