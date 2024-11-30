@@ -19,10 +19,14 @@ const Value = () => {
         const phoneInput = form.elements.namedItem('phone') as HTMLInputElement | null;
         const categoryInput = form.elements.namedItem('category') as HTMLSelectElement | null;
 
-        if (!nameInput || !emailInput || !phoneInput || !categoryInput) {
-            console.error("One or more form fields are missing.");
+        if (
+            !nameInput || !emailInput || !phoneInput || !categoryInput ||
+            !nameInput.value || !emailInput.value || !phoneInput.value || !categoryInput.value
+        ) {
+            setMessage("Please fill in all fields."); // Set error message
+            setSuccess(false);
             setIsSubmitting(false); // Reset submitting state
-            return; // Exit the function if any field is missing
+            return; // Exit the function if any field is empty
         }
 
         const formData = {
